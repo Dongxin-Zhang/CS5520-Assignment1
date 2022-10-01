@@ -7,15 +7,17 @@ export default function App() {
   const [text, onChangeText] = React.useState("");
   const [number, onChangeNumber] = React.useState(null);
   const [target, setTarget] = React.useState(1021);
-
   const [gameWinVisible, setGameWinVisible] = React.useState(false);
   const [gameFailVisible, setGameFailVisible] = React.useState(false);
   const [fainalVisible, setFinalVisible] = React.useState(false);
   const [gamestate,setGamestate] = React.useState(false);
 
+  // Set the textinput to be empty
   const reset = () => {
     onChangeText("")
   }
+
+  // Check if the given number is correct
   const check = () => {
     if (text >= 1020 && text <= 1029) {
       if (text == target){
@@ -32,12 +34,14 @@ export default function App() {
     }
   }
 
+  // Prepare to go to final screen from gameWinpage
   const change = () =>{
       setGameWinVisible(false)
       setGameFailVisible(false)
       setFinalVisible(true)
   }
 
+  // Prepare to go back to the starting screen
   const startagain = () =>{
     setGameWinVisible(false)
     setGameFailVisible(false)
@@ -45,19 +49,24 @@ export default function App() {
     onChangeText("")
   }
 
+  // Prepare to go to final screen from gamefailpage
   const toFinal = () =>{
-    setGameWinVisible(false)
+      setGameWinVisible(false)
       setGameFailVisible(false)
       setFinalVisible(true)
   }
 
+  // from game screen to starting screen
   const goBack = () =>{
     onChangeText("")
     setGameFailVisible(false)
   }
+
   return (
-    <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss()}}>
+    // dismiss the keyboard
+    <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss()}}> 
       <View style={styles.container}>
+        {/* game modal */}
         <Modal  visible={gameWinVisible}>
           <View style= {styles.container}>
             <View style= {styles.content}>
@@ -70,7 +79,7 @@ export default function App() {
             </View>
           </View>
         </Modal>
-
+        {/* game modal */}
         <Modal  visible={gameFailVisible}>
           <View style= {styles.container}>
             <View style= {styles.content}>
@@ -90,7 +99,7 @@ export default function App() {
             </View>
           </View>
         </Modal>
-
+        {/* final screen */}
         <Modal  visible={fainalVisible}>
           <View style= {styles.container}>
             <View style= {styles.header}>
@@ -110,7 +119,7 @@ export default function App() {
             </View>
           </View>
         </Modal>
-
+        {/* starting screen */}
         <View style= {styles.header}>
           <Text style={styles.title}>Guss My Number</Text>
         </View>
@@ -141,71 +150,3 @@ export default function App() {
     </TouchableWithoutFeedback>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   header:{
-//     borderColor:'blue',
-//     borderWidth:5,
-//     borderStyle: 'solid',
-//     padding:10,
-//     top:-80,
-//   },
-//   title:{
-//     color:'blue',
-//     fontSize: 30,
-//   },
-//   content:{
-//     alignItems:'center',
-//     height:200,
-//     width:300,
-//     backgroundColor:'black',
-//     borderRadius:10,
-//     justifyContent: 'center',
-
-//     shadowOffset: {
-//       width: 0,
-//       height: 5
-//     },
-//     shadowOpacity:0.1,
-//     shadowRadius:0.76
-  
-//   },
-//   guide:{
-//     color:'yellow',
-//     fontSize: 30,
-//   },
-//   input: {
-//     height: 40,
-//     margin: 12,
-//     borderWidth: 1,
-//     padding: 10,
-//     borderBottomColor:'yellow',
-//     borderBottomWidth:3,
-//     width:60,
-//     color:'yellow',
-//   },
-//   fixToText: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//   },
-//   gamebtn: {
-//     // flexDirection: 'row',
-//     justifyContent: 'space-between',
-//   },
-//   btn1:{
-//     color:'purple',
-//     fontSize:20,
-//     padding:10
-//   },
-//   btn2:{
-//     color:'pink',
-//     fontSize:20,
-//     padding:10,
-//   },
-// });
