@@ -149,5 +149,3 @@ export default function App() {
     </TouchableWithoutFeedback>
   );
 }
-
-// finding a way to make pull request
