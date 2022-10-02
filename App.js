@@ -144,9 +144,10 @@ export default function App() {
             </Pressable>
           </View>
         </View>
-        {/* <StatusBar style="auto" /> */}
       
       </View>
     </TouchableWithoutFeedback>
   );
 }
+
+// finding a way to make pull request
